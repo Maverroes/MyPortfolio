@@ -1,80 +1,599 @@
-* {
+*{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
 }
 
-body {
-    background: #0d0d0d;
-    color: white;
-    line-height: 1.6;
+html{
+    scroll-behavior: smooth;
 }
 
-/* Header */
-header {
-    text-align: center;
-    padding: 80px 20px;
+body{
+    background: #080808;
+    color: #fff;
 }
 
-header h1 {
-    font-size: 40px;
-    font-weight: 600;
+#header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/background.png);
+    background-size: cover;
+    background-position: center;
 }
 
-header p {
-    font-size: 18px;
-    margin: 10px 0 20px;
+.container{
+    padding: 10px 10%;
 }
 
-.btn {
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0; /* sesuaikan jika perlu */
+    background: #000; /* kasih background biar tidak transparan */
+    z-index: 1000; /* pastikan berada di depan elemen lain */
+}
+
+
+.logo{
+    width: 140px;
+}
+
+nav ul li{
     display: inline-block;
-    padding: 10px 20px;
-    background: #00aaff;
-    color: white;
-    border-radius: 5px;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a{
+    color: #fff;
     text-decoration: none;
-    transition: 0.3s;
+    font-size: 18px;
+    position: relative;
 }
 
-.btn:hover {
-    background: #0088cc;
+nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #FF3131;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
 }
 
-/* Sections */
-section {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: auto;
+nav ul li a:hover::after{
+    width: 100%;
 }
 
-h2 {
+.header-text{
+    margin-top: 20%;
+    font-size: 30px;
+}
+
+.header-text h1{
+    font-size: 60px;
+    margin-top: 20px;
+}
+
+.header-text span{
+    color: #FF3131;
+}
+
+/*-----------------ABOUT---------------*/
+
+#about{
+    padding: 80px 0;
+    color: #fff;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.about-col-1{
+    flex-basis: 35%;
+}
+
+.about-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+.about-col-2{
+    flex-basis: 60%;
+}
+
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #FF3131;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active-link::after{
+    width: 100%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+
+.tab-contents ul li span{
+    color: #FF3131;
+    font-size: 14px;
+}
+
+.tab-contents{
+    display: none;
+}
+
+.tab-contents.active-tab{
+    display: block;
+}
+
+.tab-links {
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.tab-links:hover {
+    color: #ff4d6d;     /* ganti warna saat hover */
+}
+
+/* Optional: underline animation like modern portfolio */
+.tab-links::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #ff4d6d;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.tab-links:hover::after {
+    width: 100%;       /* underline muncul saat hover */
+}
+
+
+/*----------------------------SKILLS---------------------*/
+
+.skill-card img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+
+.skills-section {
+    padding: 60px 0;
+}
+
+.skills-line {
+    width: 250px;
+    height: 3px;
+    background: #FF3131;
+    position: relative;
+}
+
+.porto-line {
+    width: 800px;
+    height: 3px;
+    background: #FF3131;
+    position: relative;
+}
+
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.skill-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 15px;
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 32px;
+    transition: 0.3s ease;
+    backdrop-filter: blur(4px);
 }
 
-/* Projects */
-.project-container {
+.skill-card img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255,49,49,0.15);
+    border-color: #FF3131;
+}
+
+.skill-card p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+
+/*------------------------------PORTFOLIO--------------------*/
+
+#portfolio{
+    padding: 50px 0;
+}
+
+.work-list{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+
+.work{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.work img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+
+.layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.layer a{
+    margin-top: 20px;
+    color: #ff004f;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.work:hover img{
+    transform: scale(1.1);
+}
+
+.work:hover .layer{
+    height: 100%;
+}
+
+.btn{
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid#FF3131;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: background 0.5s;
+}
+
+.btn:hover{
+    background: #FF3131;
+}
+
+/*-------------------------CONTACT-----------------------*/
+
+.contact-left{
+    flex-basis: 35%;
+}
+
+.contact-right{
+    flex-basis: 60%;
+}
+
+.contact-left p{
+    margin-top: 30px;
+}
+
+.contact-left p i{
+    color: #FF3131;
+    margin-right: 15px;
+    font-size: 25px;
+}
+
+.social-icons{
+    margin-top: 30px;
+}
+
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+
+.social-icons a:hover{
+    color: #FF3131;
+    transform: translateY(-5px);
+}
+
+.btn.btn2{
+    display: inline-block;
+    background: #FF3131;
+}
+
+.contact-right form{
+    width: 100%;
+}
+
+form input, form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+form .btn2{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #262626;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+/*----------CSS SMALL SCREEN--------------------*/
+
+nav .fa-solid{
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 600px){
+    #header{
+        background-image: url(images/phone.png)
+    }
+    .header-text{
+        margin-top: 100%;
+        font-size: 16px;
+    }
+    .header-text h1{
+        font-size: 30px;
+    }
+    nav .fa-solid{
+        display: block;
+        font-size: 25px;
+    }
+    nav ul{
+        background: #FF3131;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+    }
+    nav ul li{
+        display: block;
+        margin: 25px;
+    }
+    nav ul .fa-solid{
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+    .sub-title{
+        font-size:  40px;
+    }
+    .about-col-1, .about-col-2{
+        flex-basis: 100%;
+    }
+    .about-col-1{
+        margin-bottom: 30px;
+    }
+    .about-col-2{
+        font-size: 14px;
+    }
+    .tab-links{
+        font-size: 16px;
+        margin-right: 20px;
+    }
+    .contact-left, .contact-right{
+        flex-basis: 100%;
+    }
+
+}
+
+#msg{
+    color: #61b752;
+    margin-top: -130px;
+    display: block;
+}
+
+
+
+
+
+/* Header Buttons */
+.header-buttons {
+    margin-top: 40px;
+    display: flex;
     gap: 20px;
 }
 
-.project-card {
-    background: #1a1a1a;
-    padding: 20px;
-    border-radius: 10px;
-    transition: 0.3s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    background: #222;
-}
-
-/* Contact */
-#contact p {
-    text-align: center;
+.btn-cv, .btn-contact {
+    padding: 14px 30px;
     font-size: 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+/* Download CV Button */
+.btn-cv {
+    background: #FF3131;
+    color: #fff;
+    border: none;
+}
+
+.btn-cv:hover {
+    background: #d62828;
+    transform: translateY(-3px);
+}
+
+/* Contact Button */
+.btn-contact {
+    color: #FF3131;
+    border: 2px solid #FF3131;
+    background: transparent;
+}
+
+.btn-contact:hover {
+    background: #FF3131;
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .header-buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+}
+
+
+
+/*bar chart*/
+
+/* Skill Bar Container */
+.skill-bar {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Left Label */
+.skill-bar p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Background/Grey Bar */
+.bar-track {
+    width: 80%;
+    height: 8px;
+    background: #d3d3d3;
+    border-radius: 10px;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Black Progress Bar */
+.bar-fill {
+    height: 100%;
+    background: #FF3131;
+    border-radius: 10px;
+}
+
+/* Percentage (Right side) */
+.percent {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: 600;
+}
+
+/* icons */
+
+.skill-card i {
+    font-size: 50px;
+    margin-bottom: 15px;
 }
